@@ -1,0 +1,64 @@
+<html>
+<head>
+
+<title>Spring Boot Rest Palindrome Application</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<br>
+	<br>
+	<div class="container">
+		<div class="well">
+			<h3 align="center">Spring Boot Rest Palindrome Application</h3>
+			<hr>
+			<form class="form-horizontal" action="#" th:action="@{/}"
+				method="post">
+
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="word" col-2
+						col-form-label>Enter English Word :</label>
+					<div class="col-sm-5">
+						<input class="form-control" type="text" name="word"> <span
+							style="color: red;" th:if="${errorMessage != null}"
+							th:text="${errorMessage}"></span> <span
+							style="color: blue;" th:if="${text != null}"
+							th:text="'TEXT: ' + ${text.word} + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; REVERSE: ' + ${text.reverse} + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PALINDROME: ' + ${text.palindrome}"></span>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<div class="well" th:if="${texts != null}">
+			<h4 align="center">All of the string that has ever been entered
+				in and the relevant reversed (/palindrome) string</h4>
+			<hr>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Word</th>
+						<th>Reversed</th>
+						<th>Palindrome</th>
+					</tr>
+				</thead>
+				<tbody th:each="aText : ${texts}" th:remove="tag">
+					<tr>
+						<td th:text="${aText.word}"></td>
+						<td th:text="${aText.reverse}"></td>
+						<td th:text="${aText.palindrome}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
