@@ -8,17 +8,17 @@ It also display all of the string that has ever been entered in and the relevant
 
 For dictionary I use Extended Java WordNet Library
 ```
-<dependency>
-			<groupId>net.sf.extjwnl</groupId>
-			<artifactId>extjwnl</artifactId>
-			<version>1.9.4</version>
-		</dependency>
-		<!-- Princeton WordNet 3.1 data dependency -->
-		<dependency>
-			<groupId>net.sf.extjwnl</groupId>
-			<artifactId>extjwnl-data-wn31</artifactId>
-			<version>1.2</version>
-		</dependency>
+	<dependency>
+		<groupId>net.sf.extjwnl</groupId>
+		<artifactId>extjwnl</artifactId>
+		<version>1.9.4</version>
+	</dependency>
+	<!-- Princeton WordNet 3.1 data dependency -->
+	<dependency>
+		<groupId>net.sf.extjwnl</groupId>
+		<artifactId>extjwnl-data-wn31</artifactId>
+		<version>1.2</version>
+	</dependency>
 ```
 ## HOW TO RUN
 
@@ -32,7 +32,7 @@ This application is packaged as a war which has Tomcat 8 embedded. No Tomcat ins
 ```
  mvn spring-boot:run
  or
- java -jar -Dspring.profiles.active=test target/spring-boot-rest-palindrome-0.0.1-SNAPSHOT.war
+ java -jar target/spring-boot-rest-palindrome-0.0.1-SNAPSHOT.war
 ```
 * Visit http://localhost:8080
 
