@@ -23,12 +23,17 @@
 					<label class="control-label col-sm-2" for="word" col-2
 						col-form-label>Enter English Word :</label>
 					<div class="col-sm-5">
-						<input class="form-control" type="text" name="word"> <span
-							style="color: red;" th:if="${errorMessage != null}"
-							th:text="${errorMessage}"></span> <span
-							style="color: blue;" th:if="${text != null}"
-							th:text="'TEXT: ' + ${text.word} + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; REVERSE: ' + ${text.reverse} + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PALINDROME: ' + ${text.palindrome}"></span>
-					</div>
+						<input class="form-control" type="text" name="word"> <small
+							id="emailHelp" class="form-text text-muted">You can enter
+							multiple words separated by comma (,)</small><br> 
+							<ul  th:if="${errorMessages != null}" th:each="errorMessage : ${errorMessages}">
+								<li style="color: red;" th:text="${errorMessage}"></li>
+							</ul>
+							<ul th:if="${texts != null}" th:each="text : ${texts}">
+							<li style="color: blue;"  
+							th:text="'TEXT: ' + ${text.word} + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; REVERSE: ' + ${text.reverse} + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PALINDROME: ' + ${text.palindrome}"></li>
+							</ul>
+							</div>
 				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
@@ -50,7 +55,7 @@
 						<th>Palindrome</th>
 					</tr>
 				</thead>
-				<tbody th:each="aText : ${texts}" th:remove="tag">
+				<tbody th:each="aText : ${allTexts}" th:remove="tag">
 					<tr>
 						<td th:text="${aText.word}"></td>
 						<td th:text="${aText.reverse}"></td>

@@ -5,7 +5,7 @@ package com.alem.palindrome.bean;
  *
  */
 
-public class EnglishText {
+public class EnglishText implements Comparable<EnglishText> {
 
 	private String word;
 	private String reverse;
@@ -14,7 +14,7 @@ public class EnglishText {
 	public EnglishText(String word) {
 		this.word = word;
 		this.reverse = new StringBuffer(word).reverse().toString();
-		this.palindrome = this.word.equals(this.reverse) ? "YES" : "NO";
+		this.palindrome = this.word.equalsIgnoreCase(this.reverse) ? "YES" : "NO";
 	}
 
 	public String getWord() {
@@ -27,6 +27,11 @@ public class EnglishText {
 
 	public String getPalindrome() {
 		return palindrome;
+	}
+
+	@Override
+	public int compareTo(EnglishText o) {
+		return this.word.compareToIgnoreCase(o.word);
 	}
 
 }
